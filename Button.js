@@ -1,30 +1,32 @@
 class Button {
-  constructor(xpos, ypos, size) {
+  constructor(xpos, ypos) {
     this.x = xpos;
     this.y = ypos;
-    this.size = size;
-    this.width = this.height * this.size;
-    this.height = 45;
   }
 
   display() {
     push();
-    fill('black');
-    textSize(32);
-    text('Found Some Trash?', this.x, this.y - 40);
-    text('Bin.it!', this.x, this.y + 10);
-    pop();
-
-    if (mouseX > this.x - this.width / 2 && mouseY > this.y - this.height / 2 &&
-      mouseX < this.x + this.width / 2 && mouseY < this.y + this.height / 2) {
-      var t = true;
+    if (mouseX > width / 2 - 50 && mouseY > 150 - 22.5 && mouseX < width / 2 + 50 && mouseY < 150 + 22.5) {
       fill('red');
-      // if (t = true && mouseIsPressed) {
-      // 	fill('white');
-      // }
     } else {
       fill(100);
     }
-    rect(this.x, this.y, this.width, this.height, 20);
+    rect(width / 2, 150, 100, 45, 20);
+    pop();
+    push();
+    if (mouseX > width / 2 - 50 && mouseY > 210 - 22.5 && mouseX < width / 2 + 50 && mouseY < 210 + 22.5) {
+      fill('green');
+    } else {
+      fill(100);
+    }
+    rect(width / 2, 210, 130, 45, 20);
+    pop();
+    push();
+    textSize(50);
+    text('Found Some Trash?', width / 2, 100 - 40);
+    pop();
+    textSize(32);
+    text('Bin.it!', width / 2, 150 + 10);
+    text('Trick.it!', width / 2, 210 + 10);
   }
 }

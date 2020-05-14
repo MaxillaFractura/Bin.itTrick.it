@@ -4,26 +4,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>p5.js example</title>
-  <style>
-  </style>
+  <title>Bin.It-Trick.It</title>
+  <title>Main</title>
+       <style>
+     }
 
-  <script src="libraries/p5.js"></script>
-  <script src="libraries/p5.sound.js"></script>
-  <script src="sketch.js"></script>
+     body {
+       margin: 0;
+       font-family: Arial, Helvetica, sans-serif;
+     }
+
+     /* Style the content */
+     .content {
+       background-color: #ddd;
+       padding: 2px;
+       text-align: center;
+     }
+
+     /* Style the footer */
+     .footer {
+       background-color: #f1f1f1;
+       padding: 2px;
+       text-align: center;
+     }
+       </style>
 </head>
 
 <body>
-  <script>
+  <div class="content">
+    <p>Click Bin.It! to clean up the streets.</p>
+    <p>Hit Trick.It! to shred the streets.</p>
+    <p>
+         <div class="content">
+           <script src="libraries/p5.js"></script>
+           <script src="libraries/p5.sound.js"></script>
+           <script src="sketch.js"></script>
+           <script src="button.js"></script>
+           </button>
+          </div>
+      </p>
 
-    async function getData(){
-      const responsel = await fetch(litter.csv);
-      const listl = await responsel.text();
-      console.log(listl);
-    }
+    </div>
 
+<div class="footer">
+  <p>
+  <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/rUslrPOa2PY"
+  frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen></iframe>
+  </p>
+</div>
 
-  </script>
 </body>
+
 
 </html>

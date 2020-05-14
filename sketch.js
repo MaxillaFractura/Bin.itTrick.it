@@ -1,48 +1,56 @@
-
 var litter;
 var tricks;
-var rowsl;
-var rowst;
-var Combo;
+var myString;
+var myString1;
+var myString2;
+var d = 0;
+var f = 0;
 
 function preload() {
-	litter = loadStrings('litter.csv')
-	tricks = loadStrings('tricks.csv')
+	litter = loadTable('litter.csv', 'csv', 'header')
+	tricks = loadTable('tricks.csv', 'csv', 'header')
 }
 
 function setup() {
-	createCanvas(300, 300);
+	//----------------sanity check--------------------
+	// for (let r = 0; r < litter.getRowCount(); r++)
+	//     for (let c = 0; c < litter.getColumnCount(); c++) {
+	//       print(litter.getString(r, c));
+	//     }
+	// 	  for (let s = 0; s < tricks.getRowCount(); s++)
+	//     for (let t = 0; t < tricks.getColumnCount(); t++) {
+	//       print(tricks.getString(s, t));
+	//     }
+	createCanvas(windowWidth, 500);
 	textAlign(CENTER);
 	rectMode(CENTER);
 	noStroke();
- 	for (var i = 0; i < tricks.length; i++) {
-		rowst = (split(tricks[i],'\n').slice(1));
-	}
-	for (var t = 0; t < litter.length; t++) {
-		rowsl = (split(litter[t],'\n').slice(1));
-	}
-
-	print(rowst);
-	print(rowsl);
-	if (mouseIsPressed) {
-		Combo = random(rowst) + random(rowsl);
-	}
+	showButton = new Button(width / 2, height / 2);
 }
 
 function draw() {
+	background(255);
+	showButton.display();
 	push();
-	textSize(20);
-	text(Combo, width / 2, height / 2 + 50);
-	pop();
-	push();
-	if (mouseX > width / 2 - 50 && mouseY > height / 2 - 22.5 && mouseX < width / 2 + 50 && mouseY < height / 2 + 22.5) {
-		fill('red');
-	} else {
-		fill(100);
+	text(myString, width / 2, height / 2 + 40);
+	text(myString1, width / 2, height / 2 + 108);
+	text(myString2, width / 2, height / 2 + 158);
+}
+
+function mouseClicked() {
+
+	if (mouseX > width / 2 - 50 && mouseY > 150 - 22.5 && mouseX < width / 2 + 50 && mouseY < 150 + 22.5) {
+		d++
+		if (d > litter.getRowCount() - 1) {
+			d = 0;
+			// } else {
+			// 	d++
+		}
+		myString = (litter.getString(d, 0));
 	}
-	rect(width / 2, height / 2, 100, 45, 20);
-	pop();
-	textSize(32);
-	text('Found Some Trash?', width / 2, height / 2 - 40);
-	text('Bin.it!', width / 2, height / 2 + 10);
+	if (mouseX > width / 2 - 50 && mouseY > 210 - 22.5 && mouseX < width / 2 + 50 && mouseY < 210 + 22.5) {
+		f = Math.floor(Math.random(0, 1) * tricks.getRowCount() - 1);
+		myString1 = (tricks.getString(f, 0));
+		myString2 = (tricks.getString(f, 1));
+	}
 }
